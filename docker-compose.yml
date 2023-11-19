@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  users_postgres:
+    image: postgres:13
+    environment:
+      POSGRES_USER: postgres
+      PGUSER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '54321:5432'
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 1s
+      timeout: 3s
+      retries: 30
